@@ -54,9 +54,12 @@ List<ComedySerial> comedySerials = serials.Where(serial => serial.Genre.Trim().T
                                         Director = serial.Director
                                     }).ToList();
 
+var orderComedySerials = comedySerials.OrderBy(serial => serial.Name)
+                                      .ThenBy(serial => serial.Director);
+
 Console.WriteLine("-------------- KOMEDİ DİZİLERİ ---------------");
 
-foreach(var serial in comedySerials) 
+foreach(var serial in orderComedySerials) 
 {
     Console.WriteLine($"Adı: {serial.Name}, Director: {serial.Director}, Tür: {serial.Genre}");
 }
